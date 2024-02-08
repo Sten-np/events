@@ -49,6 +49,14 @@
             @enderror value="{{ old('date') }}" name="date" id="event_date" type="date" required>
         </div>
         <div class="mb-6">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="event_date">
+                Event Time
+            </label>
+            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" @error('event_date')
+            <p class="text-red-500 text-xs italic">{{ $message }}</p>
+            @enderror value="{{ old('time') }}" name="time" id="event_time" type="time" required>
+        </div>
+        <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="event_location">
                 Event Location
             </label>

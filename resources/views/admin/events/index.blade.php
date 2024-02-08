@@ -12,12 +12,12 @@
         <h1>Events</h1>
 
         @if(session('status'))
-            <div class="alert alert-success">
+            <div class="alert alert-success bg-green-500">
                 {{ session('status') }}
             </div>
         @endif
         @if(session('status-wrong'))
-            <div class="alert alert-danger">
+            <div class="alert alert-danger bg-red-400">
                 {{ session('status-wrong') }}
             </div>
         @endif
@@ -28,9 +28,11 @@
                     <th>ID</th>
                     <th>Event Name</th>
                     <th>Event Date</th>
+                    <th>Event Time</th>
                     <th>Event Location</th>
                     <th>Event Description</th>
                     <th>Actions</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,9 +41,16 @@
                         <td>{{ $event->id }}</td>
                         <td>{{ $event->name }}</td>
                         <td>{{ $event->date }}</td>
+                        <td>{{ $event->time }}</td>
                         <td>{{ $event->location }}</td>
                         <td>{{ $event->description }}</td>
-                        <td><a href="{{ route('events.show', ['event' => $event->id]) }}">Show</a></td>
+                        <td>
+                            <a href="{{ route('events.show', ['event' => $event->id]) }}">Show</a>
+                            <a href="{{ route('events.edit', ['event' => $event->id]) }}">Edit</a>
+                        </td>
+                        <td>
+{{--                            Hier komt Delete--}}
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
