@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin as admin;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/admin', function () {
     return view('layouts.layoutadmin');
 });
+
+Route::resource('admin/events', admin\EventController::class);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
