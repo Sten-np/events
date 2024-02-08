@@ -3,35 +3,43 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreEventRequest;
+use App\Http\Requests\EventStoreRequest;
 use App\Http\Requests\UpdateEventRequest;
 use App\Models\Event;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class EventController extends Controller
 {
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+     * @return View
      */
-    public function index(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Foundation\Application
+    public function index(): View
     {
         $events = Event::all();
         return View('admin.events.index', compact('events'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * @return View
      */
-    public function create()
+    public function create(): View
     {
-        //
+        return view('admin.events.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @param EventStoreRequest $request
      */
-    public function store(StoreEventRequest $request)
+    public function store(EventStoreRequest $request)
     {
-        //
+        $event = new Event();
+        $event->name = $request->name;
+        $event->description = $request->description;
+        $event->date = $request->date;
+        $event->location = $request->location;
+        $event->save();
+        return to_route('admin.events.index')->with('status'. 'Event created successfully');
     }
 
     /**

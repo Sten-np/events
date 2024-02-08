@@ -19,6 +19,7 @@ class EventFactory extends Factory
         return [
             'name' => $this->faker->city().' Event',
             'date' => $this->faker->dateTimeBetween('now', '+4 week'),
+            'description' => $this->faker->text,
             'location' => $this->faker->address,
         ];
     }
