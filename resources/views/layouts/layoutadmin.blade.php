@@ -35,7 +35,7 @@
                         <ul class="list-reset">
                             <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>
                             <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Notifications</a></li>
-                            <li><hr class="border-t mx-2 border-grey-ligght"></li>
+                            <li><hr class="border-t mx-2 border-grey-light"></li>
                             <li><a href="#" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">Logout</a></li>
                         </ul>
                     </div>
@@ -50,7 +50,7 @@
 
                 <ul class="list-reset flex flex-col">
                     <li class=" w-full h-full py-3 px-2 border-b border-light-border bg-white">
-                        <a href="{{ route('') }}"
+                        <a href="#"
                            class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fas fa-tachometer-alt float-left mx-2"></i>
                             Dashboard
