@@ -29,7 +29,7 @@
 
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" @error('event_name')
             <p class="text-red-500 text-xs italic">{{ $message }}</p>
-            @enderror value="{{ old('event_name') }}" name="event_name" id="event_name" type="text" placeholder="Event Name" required>
+            @enderror value="{{ old('name') }}" name="name" id="event_name" type="text" placeholder="Event Name" required>
         </div>
         <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="event_description">
@@ -38,7 +38,7 @@
 
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" @error('event_description')
             <p class="text-red-500 text-xs italic">{{ $message }}</p>
-            @enderror value="{{ old('event_description') }}" name="event_description" id="event_description" type="text" placeholder="Event Description" required>
+            @enderror value="{{ old('description') }}" name="description" id="event_description" type="text" placeholder="Event Description" required>
         </div>
         <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="event_date">
@@ -46,7 +46,7 @@
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" @error('event_date')
             <p class="text-red-500 text-xs italic">{{ $message }}</p>
-            @enderror value="{{ old('event_date') }}" name="event_date" id="event_date" type="date" required>
+            @enderror value="{{ old('date') }}" name="date" id="event_date" type="date" required>
         </div>
         <div class="mb-6">
             <label class="block text-gray-700 text-sm font-bold mb-2" for="event_location">
@@ -55,7 +55,7 @@
 
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" @error('event_location')
             <p class="text-red-500 text-xs italic">{{ $message }}</p>
-            @enderror value="{{ old('event_location') }}" name="event_location" id="event_location" type="text" placeholder="Event Location" required>
+            @enderror value="{{ old('location') }}" name="location" id="event_location" type="text" placeholder="Event Location" required>
         </div>
         <div class="flex items-center justify-between">
             <button class="mt-2 px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150

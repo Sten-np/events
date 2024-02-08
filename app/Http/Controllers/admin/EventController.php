@@ -16,7 +16,7 @@ class EventController extends Controller
      */
     public function index(): View
     {
-        $events = Event::all();
+        $events = Event::paginate(12);
         return View('admin.events.index', compact('events'));
     }
 
@@ -39,7 +39,7 @@ class EventController extends Controller
         $event->date = $request->date;
         $event->location = $request->location;
         $event->save();
-        return to_route('admin.events.index')->with('status'. 'Event created successfully');
+        return to_route('events.index')->with('status'. 'Event created successfully');
     }
 
     /**

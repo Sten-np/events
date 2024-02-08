@@ -8,18 +8,19 @@
 @endsection
 
 @section('content')
-    @if(session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-    @endif
-    @if(session('status-wrong'))
-        <div class="alert alert-danger">
-            {{ session('status-wrong') }}
-        </div>
-    @endif
     <div class="container">
         <h1>Events</h1>
+
+        @if(session('status'))
+            <div class="alert alert-success">
+                {{ session('status') }}
+            </div>
+        @endif
+        @if(session('status-wrong'))
+            <div class="alert alert-danger">
+                {{ session('status-wrong') }}
+            </div>
+        @endif
 
         <table class="table">
             <thead>
@@ -29,7 +30,6 @@
                     <th>Event Date</th>
                     <th>Event Location</th>
                     <th>Event Description</th>
-                    <th>Event Image</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -47,5 +47,13 @@
             </tbody>
         </table>
     </div>
+
+    <div class="container max-w-4xl mx-auto pb-10 flex justify-between items-center px-3">
+        <div class="text-xs">
+            {{ $events->links() }}
+        </div>
+    </div>
+
+
 
 @endsection
