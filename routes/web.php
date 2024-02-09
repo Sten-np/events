@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin as admin;
+use App\Http\Controllers\open as open;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('layouts.layoutpublic');
+})->name('home');
 
 Route::get('/admin', function () {
     return view('layouts.layoutadmin');
@@ -25,8 +26,10 @@ Route::get('/admin', function () {
 
 Route::resource('admin/events', admin\EventController::class);
 
+Route::resource('/events', open\OpenEventController::class);
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('layouts.layoutpublic');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
