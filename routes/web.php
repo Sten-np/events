@@ -25,6 +25,8 @@ Route::get('/admin', function () {
 });
 
 Route::resource('admin/events', admin\EventController::class);
+Route::resource('admin/users', admin\UserController::class);
+
 
 Route::resource('/events', open\OpenEventController::class);
 
