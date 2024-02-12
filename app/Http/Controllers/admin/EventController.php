@@ -9,8 +9,20 @@ use App\Models\Event;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
 
+
 class EventController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:index events', ['only' => ['index']]);
+        $this->middleware('permission:show events', ['only' => ['show']]);
+        $this->middleware('permission:create events', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit events', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete events', ['only' => ['delete', 'destroy']]);
+    }
+
     /**
      * @return View
      */

@@ -20,15 +20,21 @@ Route::get('/', function () {
     return view('layouts.layoutpublic');
 })->name('home');
 
-Route::get('/admin', function () {
-    return view('layouts.layoutadmin');
+Route::group(['middleware' => ['auth', 'role:admin']], function () {
+    Route::resource('admin/events', admin\EventController::class);
+    Route::resource('admin/users', admin\UserController::class);
 });
 
-Route::resource('admin/events', admin\EventController::class);
-Route::resource('admin/users', admin\UserController::class);
+Route::group(['middleware' => ['auth', 'role:admin|organizer']], function () {
+    Route::get('/admin', function () {
+        return view('layouts.layoutadmin');
+    });
+    Route::resource('admin/events', admin\EventController::class);
+});
+
+Route::get('events', [open\OpenEventController::class, 'index'])->name('events');
 
 
-Route::resource('/events', open\OpenEventController::class);
 
 Route::get('/dashboard', function () {
     return view('layouts.layoutpublic');
