@@ -15,7 +15,7 @@
         <nav>
             <ul class="flex space-x-4">
                 <li><a href="{{ route('home') }}" class="text-gray-600 hover:text-gray-800">Home</a></li>
-                <li><a href="{{ route('events.index') }}" class="text-gray-600 hover:text-gray-800">Events</a></li>
+                <li><a href="{{ route('events') }}" class="text-gray-600 hover:text-gray-800">Events</a></li>
 
                 @guest()
                     @if(Route::has('register'))
