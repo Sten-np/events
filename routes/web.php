@@ -23,6 +23,8 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('admin/events', admin\EventController::class);
     Route::resource('admin/users', admin\UserController::class);
+    Route::get('admin/users/{user}/delete' , [Admin\UserController::class, 'delete'])
+        ->name('users.delete');
 });
 
 Route::group(['middleware' => ['auth', 'role:admin|organizer']], function () {
@@ -30,18 +32,17 @@ Route::group(['middleware' => ['auth', 'role:admin|organizer']], function () {
         return view('layouts.layoutadmin');
     });
     Route::resource('admin/events', admin\EventController::class);
+    Route::get('admin/events/{event}/delete' , [Admin\EventController::class, 'delete'])
+        ->name('events.delete');
 });
 
 Route::get('events', [open\OpenEventController::class, 'index'])->name('events');
 
+//Route::get('/dashboard', function () {
+//    return view('layouts.layoutpublic');
+//})->middleware(['auth', 'verified'])->name('dashboard');
 
 
-Route::get('/dashboard', function () {
-    return view('layouts.layoutpublic');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('admin/users/{user}/delete' , [Admin\UserController::class, 'delete'])
-    ->name('users.delete');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
