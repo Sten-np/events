@@ -42,6 +42,8 @@
                     </td>
                     <td>
                         {{--                            Hier komt Delete--}}
+                        <a href="{{ route('users.delete', ['user' => $user->id]) }}">Delete</a>
+
                     </td>
                 </tr>
             @endforeach
