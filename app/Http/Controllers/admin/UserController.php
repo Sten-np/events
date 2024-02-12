@@ -74,8 +74,22 @@ class UserController extends Controller
         return to_route('users.index')->with('status', 'User updated successfully');
     }
 
+
+    /**
+     * delete the specified resource from storage.
+     * @param User $user
+     * @return View
+     */
+    public function delete(User $user): View
+    {
+        return view( 'admin.users.delete', ['user' => $user]);
+
+    }
+
     /**
      * Remove the specified resource from storage.
+     * @param User $user
+     * @return RedirectResponse
      */
     public function destroy(User $user)
     {
