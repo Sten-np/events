@@ -11,6 +11,17 @@ use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('permission:index users', ['only' => ['index']]);
+        $this->middleware('permission:show users', ['only' => ['show']]);
+        $this->middleware('permission:create users', ['only' => ['create', 'store']]);
+        $this->middleware('permission:edit users', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:delete users', ['only' => ['delete', 'destroy']]);
+    }
+
     /**
      * @return View
      */
