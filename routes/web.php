@@ -30,7 +30,7 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
 Route::group(['middleware' => ['auth', 'role:admin|organizer']], function () {
     Route::get('/admin', function () {
         return view('layouts.layoutadmin');
-    });
+    })->name('admin');
     Route::resource('admin/events', admin\EventController::class);
     Route::get('admin/events/{event}/delete' , [Admin\EventController::class, 'delete'])
         ->name('events.delete');
@@ -38,18 +38,17 @@ Route::group(['middleware' => ['auth', 'role:admin|organizer']], function () {
 
 Route::get('events', [open\OpenEventController::class, 'index'])->name('events');
 
-//Route::get('/dashboard', function () {
-//    return view('layouts.layoutpublic');
-//})->middleware(['auth', 'verified'])->name('dashboard');
+
+
+Route::get('/cart', [open\CartController::class, 'index'])->name('cart.index');
+Route::post('/cart/add', [open\CartController::class, 'addToCart'])->name('cart.add');
+Route::delete('/cart/remove/{rowId}', [open\CartController::class, 'removeFromCart'])->name('cart.remove');
+Route::put('cart/update/{rowId}', [open\CartController::class, 'updateCart'])->name('cart.update');
+
 
 Route::get('/dashboard', function () {
     return view('layouts.layoutpublic');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-
-Route::get('admin/users/{user}/delete' , [Admin\UserController::class, 'delete'])
-    ->name('users.delete');
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
