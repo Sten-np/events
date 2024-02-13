@@ -92,6 +92,15 @@ class EventController extends Controller
     }
 
     /**
+     * @param Event $event
+     * @return View
+     */
+    public function delete(Event $event): View
+    {
+        return view('admin.events.delete', ['event' => $event]);
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(Event $event)

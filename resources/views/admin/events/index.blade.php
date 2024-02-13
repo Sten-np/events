@@ -49,7 +49,7 @@
                             <a href="{{ route('events.edit', ['event' => $event->id]) }}">Edit</a>
                         </td>
                         <td>
-{{--                            Hier komt Delete--}}
+                            <a href="{{ route('events.delete', ['event' => $event->id]) }}">Delete</a>
                         </td>
                     </tr>
                 @endforeach
