@@ -35,13 +35,13 @@ Route::group(['middleware' => ['auth', 'role:admin|organizer']], function () {
 Route::get('events', [open\OpenEventController::class, 'index'])->name('events');
 
 
-
 Route::get('/dashboard', function () {
     return view('layouts.layoutpublic');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('admin/users/{user}/delete' , [Admin\UserController::class, 'delete'])
     ->name('users.delete');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
