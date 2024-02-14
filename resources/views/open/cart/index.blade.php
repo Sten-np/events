@@ -2,8 +2,12 @@
 
 @section('shoppingcart')
     @if(session('success'))
-        <div class="bg-green-400">
+        <div class="bg-green-500 text-white px-4 py-2 rounded-md shadow-md">
             {{ session('success') }}
+        </div>
+    @elseif(session('error'))
+        <div class="bg-red-500 text-white px-4 py-2 rounded-md shadow-md">
+            {{ session('error') }}
         </div>
     @endif
     <body class="bg-gray-100">
@@ -42,7 +46,11 @@
                         <span>Total cost with tax</span>
                         <span>{{ $totalWithTax }}</span>
                     </div>
-                    <button class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+                    <form action="{{ route('checkout.placeOrder') }}" method="post">
+                        @csrf
+                        <input type="hidden" name="total" value="{{ $totalWithTax }}">
+                        <button type="submit" class="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+                    </form>
                 </div>
             </div>
 

@@ -9,6 +9,8 @@ class Orderline extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['order_id', 'event_id', 'quantity'];
+
 
     public function order()
     {

@@ -45,6 +45,8 @@ Route::post('/cart/add', [open\CartController::class, 'addToCart'])->name('cart.
 Route::delete('/cart/remove/{rowId}', [open\CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::put('cart/update/{rowId}', [open\CartController::class, 'updateCart'])->name('cart.update');
 
+Route::post('/checkout', [open\CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
+
 
 Route::get('/dashboard', function () {
     return view('layouts.layoutpublic');

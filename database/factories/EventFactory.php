@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 use App\Models\Event;
+use App\Models\Price;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -23,6 +24,7 @@ class EventFactory extends Factory
             'time' => $this->faker->time('H:i'),
             'description' => $this->faker->text,
             'location' => $this->faker->address,
+            'price' => Price::all()->random()->price,
         ];
     }
 }
