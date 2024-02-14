@@ -23,7 +23,7 @@ class CartController extends Controller
 
         if ($product) {
             // Add the product to the cart
-            Cart::add($product->id, $product->name, 1, 100);
+            Cart::add($product->id, $product->name, 1, $product->price);
 
             // Redirect back with success message
             return redirect()->route('cart.index')->with('success', 'Item was added to your cart');

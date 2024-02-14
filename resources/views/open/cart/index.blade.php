@@ -20,8 +20,8 @@
                 @endif
                 @foreach(Cart::content() as $item)
                     <div>
-                        <p>{{ $item->name }}</p>
-                        <p>Price: {{ $item->price }}</p>
+                        <strong>{{ $item->name }}</strong>
+                        <p>Price: &euro; {{ $item->price }}</p>
                         <form action="{{ route('cart.update', ['rowId' => $item->rowId]) }}" method="post">
                             @csrf
                             @method('PUT')
@@ -43,12 +43,12 @@
                 <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
                 <div class="flex justify-between mt-10 mb-5">
                     <span class="font-semibold text-sm uppercase">Items: {{ Cart::content()->count()  }}</span>
-                    <span class="font-semibold text-sm">{{ $subtotal }}</span>
+                    <span class="font-semibold text-sm">&euro; {{ $subtotal }}</span>
                 </div>
                 <div class="border-t mt-8">
                     <div class="flex font-semibold justify-between py-6 text-sm uppercase">
-                        <span>Total cost with tax</span>
-                        <span>{{ $totalWithTax }}</span>
+                        <span>Total cost with tax <p>(21%)</p></span>
+                        <span>&euro; {{ $totalWithTax }}</span>
                     </div>
                     <form action="{{ route('checkout.placeOrder') }}" method="post">
                         @csrf

@@ -37,7 +37,7 @@ class CheckoutController extends Controller
             }
             Cart::destroy();
 
-            return redirect()->route('cart.index')->with('success', 'Order has been placed');
+            return redirect()->route('cart.index')->with('success', 'Order has been placed. Thank you for your purchase!');
 
         } catch (Exception $e) {
             return redirect()->route('cart.index')->with('error', 'Something went wrong, please try again later.');
