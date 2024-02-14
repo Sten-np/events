@@ -23,4 +23,9 @@ class Event extends Model
     {
         return $this->hasOne(Price::class)->orderBy('effdate','desc');
     }
+
+    public function orderlines()
+    {
+        return $this->hasMany(Orderline::class);
+    }
 }
