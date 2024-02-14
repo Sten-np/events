@@ -2,20 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Event;
+use App\Models\Price;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class EventSeeder extends Seeder
+class PriceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        Event::Factory(20) ->times(25)
-            ->has(Event::factory()->times(5))
-            ->hasPrices(3)
-            ->create();;
+        Price::factory()->times(100)->create();
     }
 }
