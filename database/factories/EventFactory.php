@@ -24,7 +24,7 @@ class EventFactory extends Factory
             'time' => $this->faker->time('H:i'),
             'description' => $this->faker->text,
             'location' => $this->faker->address,
-            'price' => Price::all()->random()->price,
+            'price' => $this->faker->randomFloat(2, 30, 120),
         ];
     }
 }

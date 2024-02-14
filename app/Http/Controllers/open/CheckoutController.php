@@ -18,6 +18,10 @@ class CheckoutController extends Controller
                 return redirect()->route('cart.index')->with('error', 'Your cart is empty');
             }
 
+            if (!Auth()->check()) {
+                return redirect()->route('login');
+            }
+
             $order = Order::create([
                 'user_id' => Auth()->id(),
                 'total_price' => Cart::total(),
@@ -31,13 +35,12 @@ class CheckoutController extends Controller
                     'total_price' => $item->price,
                 ]);
             }
-
             Cart::destroy();
 
             return redirect()->route('cart.index')->with('success', 'Order has been placed');
 
         } catch (Exception $e) {
-            return redirect()->route('cart.index')->with('error', 'Your cart is empty');
+            return redirect()->route('cart.index')->with('error', 'Something went wrong, please try again later.');
         }
 
 

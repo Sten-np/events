@@ -17,7 +17,6 @@ return new class extends Migration
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('event_id')->constrained()
                 ->onUpdate('cascade')->onDelete('cascade');
-
             $table->integer('quantity');
             $table->timestamps();
         });

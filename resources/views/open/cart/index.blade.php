@@ -14,6 +14,10 @@
     <div class="container mx-auto mt-10">
         <div class="flex shadow-md my-10">
             <div class="w-3/4 bg-white px-10 py-10">
+                @if(Cart::content()->count() == 0)
+                    <h1 class="text-3xl font-semibold">Your cart is empty!</h1>
+                    <p><a href="{{ route('events') }}">Add items now... click here!</a> </p>
+                @endif
                 @foreach(Cart::content() as $item)
                     <div>
                         <p>{{ $item->name }}</p>

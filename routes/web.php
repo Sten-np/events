@@ -45,7 +45,8 @@ Route::post('/cart/add', [open\CartController::class, 'addToCart'])->name('cart.
 Route::delete('/cart/remove/{rowId}', [open\CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::put('cart/update/{rowId}', [open\CartController::class, 'updateCart'])->name('cart.update');
 
-Route::post('/checkout', [open\CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
+
+
 
 
 Route::get('/dashboard', function () {
@@ -56,6 +57,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/checkout', [open\CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
+
 });
 
 require __DIR__.'/auth.php';
