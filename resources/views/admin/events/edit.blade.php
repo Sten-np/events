@@ -58,6 +58,14 @@
                 @enderror value="{{ old('time', $event->time) }}" name="time" id="event_time" type="time" required>
             </div>
             <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="event_price">
+                    Event Price
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" @error('event_price')
+                <p class="text-red-500 text-xs italic">{{ $message }}</p>
+                @enderror value="{{ old('price', $event->price) }}" name="price" id="event_price" type="text" required>
+            </div>
+            <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="event_location">
                     Event Location
                 </label>

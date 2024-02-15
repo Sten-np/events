@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Event;
+use App\Models\Price;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -19,9 +20,10 @@ class PriceFactory extends Factory
     public function definition(): array
     {
         return [
-            'price' => $this->faker->randomFloat(2, 2,  6),
+            'price' => $this->faker->numberBetween(30,120),
             'effdate' => Carbon::Today()->subDays(random_int(0, 365)),
-            'event_id' => Event::all()->random()->id
+            'event_id' => Event::all()->random()->id,
+
         ];
     }
 }

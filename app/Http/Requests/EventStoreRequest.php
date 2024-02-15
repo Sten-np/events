@@ -27,6 +27,8 @@ class EventStoreRequest extends FormRequest
             'location' => 'string|min:5|max:100|required',
             'date' => 'date|required|after:today',
             'time' => 'date_format:H:i|required',
+            'price' => 'string|required',
+
         ];
     }
 }

@@ -29,6 +29,7 @@
                     <th>Event Name</th>
                     <th>Event Date</th>
                     <th>Event Time</th>
+                    <th>Event Price</th>
                     <th>Event Location</th>
                     <th>Event Description</th>
                     <th>Actions</th>
@@ -42,6 +43,7 @@
                         <td>{{ $event->name }}</td>
                         <td>{{ $event->date }}</td>
                         <td>{{ $event->time }}</td>
+                        <td>{{ $event->latest_price->price}}</td>
                         <td>{{ $event->location }}</td>
                         <td>{{ $event->description }}</td>
                         <td>
