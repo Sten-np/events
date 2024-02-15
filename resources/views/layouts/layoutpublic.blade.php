@@ -30,7 +30,7 @@
             position: absolute;
             background-color: #f9f9f9;
             min-width: 160px;
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
@@ -57,7 +57,7 @@
 <body class="bg-gray-100">
 <header class="bg-white shadow-lg">
     <div class="container mx-auto px-4 py-2 flex items-center justify-between">
-        <h1 class="text-lg font-bold">Events+</h1>
+        <h1 class="text-lg font-bold"><a href="{{ route('home') }}" class="text-gray-600 hover:text-gray-800">Events+</a></h1>
         <nav>
             <ul class="flex space-x-4">
                 <li><a href="{{ route('home') }}" class="text-gray-600 hover:text-gray-800">Home</a></li>
@@ -71,7 +71,12 @@
                     <a href="{{ route('login') }}"
                        class="inline-block no-underline bg-black text-white text-sm py-2 px-3">Login</a>
                     <a href="{{ route('cart.index') }}"
-                       class="inline-block no-underline bg-black text-white text-sm py-2 px-3">Cart</a>
+                       class="inline-block no-underline bg-black text-white text-sm py-2 px-3">Cart
+                        <span
+                            class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+                            {{ Cart::count() }}
+                        </span>
+                    </a>
                 @else
                     <div class="dropdown">
                         <button class="dropdown-btn">{{ Auth()->user()->name }}</button>
@@ -85,6 +90,10 @@
                     </div>
                     <a href="{{ route('cart.index') }}"
                        class="inline-block no-underline bg-black text-white text-sm py-2 px-3">Cart
+                        <span
+                            class="inline-flex items-center justify-center w-4 h-4 ms-2 text-xs font-semibold text-blue-800 bg-blue-200 rounded-full">
+                            {{ Cart::count() }}
+                        </span>
                     </a>
                 @endguest
 

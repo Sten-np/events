@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth', 'role:admin|organizer']], function () {
 });
 
 Route::get('events', [open\OpenEventController::class, 'index'])->name('events');
+Route::get('events/{event}', [open\OpenEventController::class, 'show'])->name('events.show');
 
 
 
@@ -44,6 +45,9 @@ Route::get('/cart', [open\CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add', [open\CartController::class, 'addToCart'])->name('cart.add');
 Route::delete('/cart/remove/{rowId}', [open\CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::put('cart/update/{rowId}', [open\CartController::class, 'updateCart'])->name('cart.update');
+
+
+
 
 
 Route::get('/dashboard', function () {
@@ -54,6 +58,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/checkout', [open\CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
+
 });
 
 require __DIR__.'/auth.php';

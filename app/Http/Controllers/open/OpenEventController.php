@@ -17,4 +17,14 @@ class OpenEventController extends Controller
         $events = Event::paginate(12);
         return view('open.events.index', compact('events'));
     }
+
+
+    /**
+     * @param Event $event
+     * @return View
+     */
+    public function show(Event $event): View
+    {
+        return view('open.events.show', compact('event'));
+    }
 }
