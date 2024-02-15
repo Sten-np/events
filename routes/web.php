@@ -59,7 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/checkout', [open\CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
-
+    Route::get('/orders', [open\OrderController::class, 'index'])->name('orders.index');
 });
 
 require __DIR__.'/auth.php';

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Shop Layout</title>
+    <title>@yield('title', 'Home')</title>
     <!-- Include Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
@@ -82,7 +82,7 @@
                         <button class="dropdown-btn">{{ Auth()->user()->name }}</button>
                         <div class="dropdown-content">
                             <a href="{{ route('profile.edit') }}">Profile</a>
-                            <a href="#">Orders</a>
+                            <a href="{{ route('orders.index') }}">Orders</a>
                             @hasanyrole('admin|organizer')
                             <a href="{{ route('admin') }}">Admin</a>
                             @endhasanyrole

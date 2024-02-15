@@ -50,4 +50,9 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function orderlines()
+    {
+        return $this->hasManyThrough(Orderline::class, Order::class);
+    }
+
 }

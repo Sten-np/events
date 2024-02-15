@@ -1,5 +1,7 @@
 @extends('layouts.layoutpublic')
 
+@section('title', 'Events')
+
 @section('content')
     @foreach($events as $event)
         <div class="bg-white shadow-md p-4">
@@ -9,7 +11,7 @@
 
             <div class="mt-2">
                 <span class="text-gray-700">Price: </span>
-                <span class="text-blue-700 font-semibold">&euro; {{ $event->latest_price->price }}</span>
+                <span class="text-blue-700 font-semibold">&euro; {{ $event->price }}</span>
             </div>
 
             <form action="{{ route('cart.add') }}" method="post">
