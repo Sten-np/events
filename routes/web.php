@@ -37,6 +37,7 @@ Route::group(['middleware' => ['auth', 'role:admin|organizer']], function () {
 });
 
 Route::get('events', [open\OpenEventController::class, 'index'])->name('events');
+Route::get('events/{event}', [open\OpenEventController::class, 'show'])->name('events.show');
 
 
 
