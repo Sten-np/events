@@ -119,8 +119,6 @@
             <!-- Product Card -->
             @yield('content')
             <!-- Repeat for other products... -->
-            <!-- footer -->
-
         </div>
         @yield('shoppingcart')
     </main>

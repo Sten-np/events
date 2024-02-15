@@ -25,7 +25,7 @@
 
                 <div class="p-1 flex flex-row items-center">
                     <button>
-                        <a href="{{ route('home') }}"
+                        <a href="{{ route('homes') }}"
                            class="text-white text-base no-underline hover:no-underline font-extrabold text-l">
                             Public Shop
                         </a>

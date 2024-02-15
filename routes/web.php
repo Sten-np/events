@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('layouts.layoutpublic');
-})->name('home');
+})->name('homes');
 
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('admin/events', admin\EventController::class);
@@ -38,6 +38,9 @@ Route::group(['middleware' => ['auth', 'role:admin|organizer']], function () {
 
 Route::get('events', [open\OpenEventController::class, 'index'])->name('events');
 Route::get('events/{event}', [open\OpenEventController::class, 'show'])->name('events.show');
+
+Route::get('homes', [open\OpenEventController::class, 'index'])->name('homes');
+Route::get('homes/{homes}', [open\OpenHomeController::class, 'show'])->name('homes.show');
 
 
 
