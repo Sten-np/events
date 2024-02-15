@@ -20,12 +20,14 @@ Route::get('/', function () {
     return view('layouts.layoutpublic');
 })->name('home');
 
+
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::resource('admin/events', admin\EventController::class);
     Route::resource('admin/users', admin\UserController::class);
     Route::get('admin/users/{user}/delete' , [Admin\UserController::class, 'delete'])
         ->name('users.delete');
 });
+
 
 Route::group(['middleware' => ['auth', 'role:admin|organizer']], function () {
     Route::get('/admin', function () {
@@ -36,18 +38,15 @@ Route::group(['middleware' => ['auth', 'role:admin|organizer']], function () {
         ->name('events.delete');
 });
 
+
 Route::get('events', [open\OpenEventController::class, 'index'])->name('events');
 Route::get('events/{event}', [open\OpenEventController::class, 'show'])->name('events.show');
-
 
 
 Route::get('/cart', [open\CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add', [open\CartController::class, 'addToCart'])->name('cart.add');
 Route::delete('/cart/remove/{rowId}', [open\CartController::class, 'removeFromCart'])->name('cart.remove');
 Route::put('cart/update/{rowId}', [open\CartController::class, 'updateCart'])->name('cart.update');
-
-
-
 
 
 Route::get('/dashboard', function () {
@@ -60,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::post('/checkout', [open\CheckoutController::class, 'placeOrder'])->name('checkout.placeOrder');
     Route::get('/orders', [open\OrderController::class, 'index'])->name('orders.index');
+    Route::delete('/orders/{order}', [open\OrderController::class, 'destroy'])->name('orders.destroy');
 });
 
 require __DIR__.'/auth.php';

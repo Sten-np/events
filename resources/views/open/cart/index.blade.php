@@ -27,7 +27,7 @@
                         <form action="{{ route('cart.update', ['rowId' => $item->rowId]) }}" method="post">
                             @csrf
                             @method('PUT')
-                            <input type="number" max="9" name="quantity" value="{{ $item->qty }}">
+                            <input type="number" max="9" name="quantity" id="qty" oninput="updateValue(this)" value="{{ $item->qty }}">
                             <button type="submit" class="font-semibold hover:text-blue-500 text-gray-500 text-xs">Change</button>
                         </form>
 
@@ -59,7 +59,6 @@
                     </form>
                 </div>
             </div>
-
         </div>
     </div>
     </body>
