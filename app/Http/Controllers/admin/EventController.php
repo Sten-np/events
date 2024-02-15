@@ -52,7 +52,7 @@ class EventController extends Controller
         $event->date = $request->date;
         $event->time = $request->time;
         $event->location = $request->location;
-        $event->price = $request->price;
+        $event->prices->price = $request->price;
         $event->save();
         return to_route('events.index')->with('status', 'Event created successfully');
     }
@@ -87,7 +87,7 @@ class EventController extends Controller
         $event->date = $request->date;
         $event->time = $request->time;
         $event->location = $request->location;
-        $event->price = $request->price;
+        $event->prices->price = $request->price;
         $event->save();
 
         return to_route('events.index')->with('status', 'Event updated successfully');
