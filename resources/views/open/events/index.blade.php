@@ -9,7 +9,7 @@
 
             <div class="mt-2">
                 <span class="text-gray-700">Price: </span>
-                <span class="text-blue-700 font-semibold">&euro; {{ $event->price }}</span>
+                <span class="text-blue-700 font-semibold">&euro; {{ $event->latest_price->price }}</span>
             </div>
 
             <form action="{{ route('cart.add') }}" method="post">
