@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h1>Events</h1>
+        <h1>All Orders</h1>
 
         @if(session('status'))
             <div class="alert alert-success bg-green-500">
@@ -45,10 +45,6 @@
                     class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Cancel
                 </th>
-                <th scope="col"
-                    class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Edit
-                </th>
             </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
@@ -62,24 +58,12 @@
                         <td class="px-6 py-4 whitespace-nowrap">{{ $order->created_at }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">{{ $order->user->name }}</td>
                         <td class="px-6 py-4 whitespace-nowrap">
-
-                            <form action="{{ route('orders.destroy', ['order' => $order->id]) }}" method="post">
-                                @method('DELETE')
+                            <form action="{{ route('admin.orders.destroy', ['order' => $order->id]) }}" method="POST">
                                 @csrf
-                                <button type="submit"
-                                        class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md">
-                                    Cancel
-                                </button>
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md">Delete</button>
                             </form>
                         </td>
-
-                        <td class="px-6 py-4 whitespace-nowrap">
-                            <button
-                                    class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md">
-                                <a href="{{ route('admin.orders.edit', ['order' => $order->id]) }}">Edit</a>
-                            </button>
-                        </td>
-
                     </tr>
                 @endforeach
             @endforeach

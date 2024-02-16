@@ -4,10 +4,17 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class OrderController extends Controller
 {
+
+    /**
+     * OrderController constructor
+     */
     public function __construct()
     {
         $this->middleware('auth');
@@ -18,21 +25,24 @@ class OrderController extends Controller
         $this->middleware('permission:delete orders', ['only' => ['delete', 'destroy']]);
     }
 
-    public function index()
+    /**
+     * @return View
+     */
+    public function index(): View
     {
-        $orders = auth()->user()->orders()->with('orderlines')->latest()->get();
+        $orders = Order::all();
         return view('admin.orders.index', compact('orders'));
     }
 
-    public function edit(Order $order)
+
+    /**
+     * @param Order $order
+     * @return RedirectResponse
+     */
+    public function destroy(Order $order): RedirectResponse
     {
-        return view('admin.orders.edit', compact('order'));
-    }
-
-
-    public function destroy( )
-    {
-
+        $order->delete();
+        return to_route('admin.orders.index')->with('status', 'Order deleted!');
     }
 
 
