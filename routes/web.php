@@ -36,6 +36,9 @@ Route::group(['middleware' => ['auth', 'role:admin|organizer']], function () {
     Route::resource('admin/events', admin\EventController::class);
     Route::get('admin/events/{event}/delete' , [Admin\EventController::class, 'delete'])
         ->name('events.delete');
+    Route::resource('/admin/orders', admin\OrderController::class)->names(['index' => 'admin.orders.index',
+        'edit' => 'admin.orders.edit',
+        ]);
 });
 
 

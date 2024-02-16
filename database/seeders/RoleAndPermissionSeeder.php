@@ -30,6 +30,13 @@ class RoleAndPermissionSeeder extends Seeder
         Permission::create(['name' => 'edit users']);
         Permission::create(['name' => 'delete users']);
 
+        Permission::create(['name' => 'index orders']);
+        Permission::create(['name' => 'show orders']);
+        Permission::create(['name' => 'create orders']);
+        Permission::create(['name' => 'edit orders']);
+        Permission::create(['name' => 'delete orders']);
+
+
         $adminRole = Role::create(['name' => 'admin']);
         $adminRole->givePermissionTo(Permission::all());
 
@@ -37,7 +44,7 @@ class RoleAndPermissionSeeder extends Seeder
         $userRole->givePermissionTo(['index events', 'show events']);
 
         $organizer = Role::create(['name' => 'organizer']);
-        $organizer->givePermissionTo(['index events', 'show events', 'create events', 'edit events', 'delete events']);
+        $organizer->givePermissionTo(['index events', 'show events', 'create events', 'edit events', 'delete events', 'index orders', 'show orders', 'create orders', 'edit orders', 'delete orders']);
 
     }
 }

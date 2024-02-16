@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -20,9 +21,18 @@ class OrderController extends Controller
     public function index()
     {
         $orders = auth()->user()->orders()->with('orderlines')->latest()->get();
-        $orderLines = auth()->user()->orderlines()->with('event')->get();
+        return view('admin.orders.index', compact('orders'));
+    }
 
-        return view('admin.order.index', compact('orders', 'orderLines'));
+    public function edit(Order $order)
+    {
+        return view('admin.orders.edit', compact('order'));
+    }
+
+
+    public function destroy( )
+    {
+
     }
 
 
